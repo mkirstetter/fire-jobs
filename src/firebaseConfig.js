@@ -1,12 +1,12 @@
 import Firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyDYQv8C6BjWZm-dPjkTrb8czu46X2HiWi4',
-  authDomain: 'fire-jobs-7def7.firebaseapp.com',
-  databaseURL: 'https://fire-jobs-7def7.firebaseio.com',
-  projectId: 'fire-jobs-7def7',
-  storageBucket: '',
-  messagingSenderId: '630021554258',
+  apiKey: '!! Replace with your own Firebase settings !!',
+  authDomain: '!! Replace with your own Firebase settings !!',
+  databaseURL: '!! Replace with your own Firebase settings !!',
+  projectId: '!! Replace with your own Firebase settings !!',
+  storageBucket: '!! Replace with your own Firebase settings !!',
+  messagingSenderId: '!! Replace with your own Firebase settings !!',
 };
 
 export const firebaseApp = Firebase.initializeApp(config);

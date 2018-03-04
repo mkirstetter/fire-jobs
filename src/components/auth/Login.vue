@@ -23,9 +23,7 @@
                   v-model="form.email"
                   class="form-control input-lg"
                   placeholder="E-mail Address"
-                  name="email"
-                  id="email"
-                  type="text"
+                  type="email"
                 >
               </div>
               <div class="form-group">
@@ -34,8 +32,6 @@
                   class="form-control input-lg"
                   placeholder="Password"
                   name="password"
-                  id="password"
-                  value=""
                   type="password"
                 >
               </div>
