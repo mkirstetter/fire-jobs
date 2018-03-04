@@ -1,12 +1,22 @@
 <template>
   <div class="container">
-    <h1>Create a Job</h1>
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            Create a Job
+          </div>
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CreateJob',
   props: [],
   data() {
     return {

@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     login() {
+      this.busy = true;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
@@ -87,6 +88,7 @@ export default {
         this.$router.push('/');
       }).catch((error) => {
         this.error.message = error.message;
+        this.busy = false;
       });
     },
   },
