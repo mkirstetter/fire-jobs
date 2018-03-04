@@ -17,6 +17,12 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class="navbar-nav" v-if="currentUser">
+          <router-link
+            to="/admin/jobs/create"
+            class="btn btn-outline-primary mr-4"
+          >
+            Post a Job
+          </router-link>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -34,6 +40,12 @@
           </li>
         </ul>
         <ul class="navbar-nav" v-else>
+          <router-link
+            to="/admin/jobs/create"
+            class="btn btn-outline-primary mr-4"
+          >
+            Post a Job
+          </router-link>
           <li class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
@@ -66,9 +78,7 @@ export default {
     logout() {
       firebaseApp.auth().signOut().then(() => {
         this.$router.push('/login');
-      }).catch((error) => {
-        console.log(error);
-      });
+      }).catch(error => error);
     },
   },
   computed: {

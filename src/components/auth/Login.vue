@@ -17,9 +17,10 @@
               </button>
               {{ error.message ? error.message : 'Oops, something went wrong.' }}
             </div>
-            <fieldset>
+            <form v-on:submit.prevent="login">
               <div class="form-group">
                 <input
+                  v-model="form.email"
                   class="form-control input-lg"
                   placeholder="E-mail Address"
                   name="email"
@@ -29,6 +30,7 @@
               </div>
               <div class="form-group">
                 <input
+                  v-model="form.password"
                   class="form-control input-lg"
                   placeholder="Password"
                   name="password"
@@ -40,9 +42,12 @@
               <button
                 class="btn btn-lg btn-primary btn-block"
                 type="submit"
-                @click.prevent="login"
-              >Login</button>
-            </fieldset>
+                v-bind:class="{ 'btn-loading': form.busy }"
+                :disabled="form.busy"
+              >
+                Login
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -66,7 +71,11 @@ export default {
   props: [],
   data() {
     return {
-      busy: false,
+      form: {
+        busy: false,
+        email: '',
+        password: '',
+      },
       error: {
         message: null,
       },
@@ -80,15 +89,15 @@ export default {
   },
   methods: {
     login() {
-      this.busy = true;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      this.form.busy = true;
+      const email = this.form.email;
+      const password = this.form.password;
 
       firebaseApp.auth().signInWithEmailAndPassword(email, password).then(() => {
         this.$router.push('/');
       }).catch((error) => {
         this.error.message = error.message;
-        this.busy = false;
+        this.form.busy = false;
       });
     },
   },
