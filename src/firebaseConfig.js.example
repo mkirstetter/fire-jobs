@@ -1,3 +1,5 @@
+// Rename this file firebaseConfig.js and insert your Firebase credentials below.
+
 import Firebase from 'firebase';
 
 const config = {
