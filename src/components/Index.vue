@@ -13,26 +13,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Head of Mapping</td>
-            <td>Wavre + remote</td>
-            <td>FULL-TIME</td>
-            <td>2 mths ago</td>
-            <td>Negotiable</td>
-          </tr>
-          <tr>
-            <td>Front-End Developer (F/M)</td>
-            <td>Brussels</td>
-            <td>PART-TIME</td>
-            <td>1 day ago</td>
-            <td>50-60k</td>
-          </tr>
-          <tr>
-            <td>Brand Ambassador Antwerpen</td>
-            <td>Paris</td>
-            <td>FREELANCE</td>
-            <td>1 hour ago</td>
-            <td>Negotiable</td>
+          <tr v-for="job in getJobs" :key="job.uid">
+            <td>{{ job.title }}</td>
+            <td>{{ job.location }}</td>
+            <td>{{ job.type }}</td>
+            <td>{{ job.createdAt | moment("from") }}</td>
+            <td>{{ job.salary }}</td>
           </tr>
         </tbody>
       </table>
@@ -41,6 +27,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Index',
   props: [],
@@ -57,6 +45,9 @@ export default {
   methods: {
   },
   computed: {
+    ...mapGetters([
+      'getJobs',
+    ]),
   },
   watch: {
   },

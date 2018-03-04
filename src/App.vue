@@ -9,12 +9,16 @@
 <script>
 import FireHeader from './components/Header';
 import FireFooter from './components/Footer';
+import { dbJobsRef } from './firebaseConfig';
 
 export default {
   name: 'App',
   components: {
     FireHeader,
     FireFooter,
+  },
+  created() {
+    this.$store.dispatch('setJobsRef', dbJobsRef);
   },
 };
 </script>

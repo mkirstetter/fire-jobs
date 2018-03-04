@@ -10,6 +10,8 @@ Vue.config.productionTip = false;
 
 require('bootstrap');
 
+Vue.use(require('vue-moment'));
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
