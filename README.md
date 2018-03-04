@@ -2,8 +2,7 @@
 
 > A Vue.js job board built with Firebase.
 
-## Config
-# Firebase
+## Firebase Config
 copy src/firebaseConfig.js.example to src/firebaseConfig.js and fill in Firebase app credentials.
 
 ## Build Setup
