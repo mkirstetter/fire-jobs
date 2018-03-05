@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="job in getJobs" :key="job.uid">
+          <tr v-for="job in getJobs" :key="job['.key']" @click="showJob(job['.key'])">
             <td>{{ job.title }}</td>
             <td>{{ job.location }}</td>
             <td>{{ job.type }}</td>
@@ -43,6 +43,10 @@ export default {
   ready() {
   },
   methods: {
+    showJob(key) {
+      // this.$router.push('/jobs/' + key);
+      this.$router.push({ name: 'ShowJob', params: { id: key } });
+    },
   },
   computed: {
     ...mapGetters([

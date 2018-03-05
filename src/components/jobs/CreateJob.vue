@@ -30,10 +30,21 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company</label>
+                <div class="col-sm-9">
+                  <input
+                    v-model="form.fields.company"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter company name"
+                  >
+                </div>
+              </div>
+              <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Category</label>
                 <div class="col-sm-9">
                   <select v-model="form.fields.category" name="category" class="form-control">
-                    <option value="">Select a category</option>
+                    <option value="0" selected disabled>Select a category</option>
                     <option value="1">Developer</option>
                     <option value="2">Designer</option>
                     <option value="3">Growth Hacker</option>
@@ -51,7 +62,7 @@
                 <label class="col-sm-3 col-form-label">Type</label>
                 <div class="col-sm-9">
                   <select v-model="form.fields.type" name="type" class="form-control">
-                    <option value="">Select a type</option>
+                    <option value="0" selected disabled>Select a type</option>
                     <option value="Full-Time">Full-Time</option>
                     <option value="Part-Time">Part-Time</option>
                     <option value="Freelance">Freelance</option>
@@ -161,13 +172,15 @@ export default {
         busy: false,
         fields: {
           title: null,
-          category: null,
-          type: null,
+          company: null,
+          category: 0,
+          type: 0,
           location: null,
           salary: null,
           email: null,
           description: null,
           applicationsBy: 'email',
+          uid: null,
           createdAt: null,
         },
       },
@@ -194,8 +207,9 @@ export default {
     addJob() {
       this.form.busy = true;
       this.form.fields.createdAt = new Date().toString();
+      this.form.fields.uid = this.currentUser.uid;
       dbJobsRef.push(this.form.fields).then(() => {
-        this.form.busy = false;
+        this.$router.push('/');
       }).catch((error) => {
         this.error.message = error.message;
         this.form.busy = false;

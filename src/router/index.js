@@ -4,6 +4,7 @@ import Index from '../components/Index';
 import Login from '../components/auth/Login';
 import Register from '../components/auth/Register';
 import CreateJob from '../components/jobs/CreateJob';
+import ShowJob from '../components/jobs/ShowJob';
 import { store } from '../store/store';
 
 Vue.use(Router);
@@ -14,6 +15,11 @@ const router = new Router({
       path: '/',
       name: 'Index',
       component: Index,
+    },
+    {
+      path: '/jobs/:id',
+      name: 'ShowJob',
+      component: ShowJob,
     },
     {
       path: '/login',
@@ -33,6 +39,11 @@ const router = new Router({
     },
   ],
   linkExactActiveClass: 'active',
+  mode: 'history',
+  // eslint-disable-next-line
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
 });
 
 router.beforeEach((to, from, next) => {

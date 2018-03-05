@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { firebaseApp } from '../../firebaseConfig';
 import { store } from '../../store/store';
 
@@ -98,9 +99,9 @@ export default {
     },
   },
   computed: {
-    currentUser() {
-      return this.$store.getters.currentUser;
-    },
+    ...mapGetters([
+      'currentUser',
+    ]),
   },
   watch: {
   },

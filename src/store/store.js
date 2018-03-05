@@ -13,6 +13,9 @@ export const store = new Vuex.Store({
   getters: {
     currentUser: state => state.currentUser,
     getJobs: state => state.jobs,
+    getJob(state) {
+      return key => state.jobs.filter(job => job['.key'] === key)[0];
+    },
   },
   mutations: {
     ...firebaseMutations,
