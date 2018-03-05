@@ -17,7 +17,12 @@
             {{ job.company }}
           </div>
           <div class="card-body">
-
+            <p>
+              <small>
+                Posted {{ job.createdAt | moment("from") }}
+              </small>
+            </p>
+            <a class="btn btn-lg btn-success btn-block" :href="apply">Apply Now</a>
           </div>
         </div>
       </div>
@@ -50,6 +55,12 @@ export default {
     ]),
     job() {
       return this.$store.getters.getJob(this.$route.params.id);
+    },
+    apply() {
+      if (this.job.applicationsBy === 'link') {
+        return this.job.link;
+      }
+      return `mailto:${this.job.email}!`;
     },
   },
   watch: {
